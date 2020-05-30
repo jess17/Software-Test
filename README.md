@@ -13,5 +13,5 @@ Clerk's account:
   PIN: 123456
 
 Customer's account:
-  Account number: 10000001 - 100000008
+  Account number: 10000001 - 100000009
   PIN: 123456
