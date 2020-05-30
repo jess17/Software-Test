@@ -6,11 +6,14 @@
 package atm.softwaretestproject;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
@@ -591,6 +594,11 @@ public class UserMainWindow extends javax.swing.JFrame {
                 jTextField_AmtActionPerformed(evt);
             }
         });
+        jTextField_Amt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField_AmtKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout AmtPanelLayout = new javax.swing.GroupLayout(AmtPanel);
         AmtPanel.setLayout(AmtPanelLayout);
@@ -876,6 +884,11 @@ public class UserMainWindow extends javax.swing.JFrame {
         jTextField_Amt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_Amt1ActionPerformed(evt);
+            }
+        });
+        jTextField_Amt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField_Amt1KeyPressed(evt);
             }
         });
 
@@ -1378,7 +1391,15 @@ public class UserMainWindow extends javax.swing.JFrame {
             new String [] {
                 "Date", "Description", "Amount In", "Amount Out", "Balance"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
@@ -1671,78 +1692,13 @@ public class UserMainWindow extends javax.swing.JFrame {
 
     private void DepositBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DepositBtnMouseClicked
         // TODO add your handling code here:
-        String amt = jTextField_Amt.getText();
-        
-        String info = "";
-        if(amt.trim().equals("")){
-            info = "Amount can't be empty";
-            JOptionPane.showMessageDialog(null, info,"Empty field",2);
-        }else if(!amt.matches("[-0-9.]+")){
-            info = "Amount must be a number";
-            JOptionPane.showMessageDialog(null, info,"Warning",2);
-        }else if(Double.parseDouble(amt)<0){
-            info = "Amount must be a positive number";
-            JOptionPane.showMessageDialog(null, info,"Warning",2);
-        }else{
-            
-            info = "Are you sure you want to deposit $" + amt +"?";
-            int returnVal = JOptionPane.showConfirmDialog(null, info, "Confirmation", JOptionPane.YES_NO_OPTION);
-//            JOptionPane.showMessageDialog(null, info,"Info",1);
-            if(returnVal == JOptionPane.YES_OPTION){
-                double depositAmt = Double.parseDouble(amt);
-                double currBalance = Double.parseDouble(getInfo("balance", currentId));
-//                depositAmt = Double.parseDouble(amt);
-                double creditLine = Double.parseDouble(getInfo("creditLine", currentId));
-                String accNumb = jTextField_AccNumb.getText();
-                
-                Operations.deposit(currBalance, currentId, depositAmt, accNumb, getName(accNumb));
-                setTextField(currentId);
-                jTextField_Amt.setText("");
-            }
-            
-        }
+        deposit();
         
     }//GEN-LAST:event_DepositBtnMouseClicked
 
     private void withdrawBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_withdrawBtnMouseClicked
         // TODO add your handling code here:
-        String amt = jTextField_Amt1.getText();
-        
-        String info = "";
-        if(amt.trim().equals("")){
-            info = "Amount can't be empty";
-            JOptionPane.showMessageDialog(null, info,"Empty field",2);
-        }else if(!amt.matches("[-0-9.]+")){
-            info = "Amount must be a number";
-            JOptionPane.showMessageDialog(null, info,"Warning",2);
-        }else if(Double.parseDouble(amt)<=0){
-            info = "Amount must be a positive number";
-            JOptionPane.showMessageDialog(null, info,"Warning",2);
-        }else{
-            info = "Are you sure you want to withdraw $" + jTextField_Amt1.getText()+"?";
-            int returnVal = JOptionPane.showConfirmDialog(null, info, "Confirmation", JOptionPane.YES_NO_OPTION);
-//            JOptionPane.showMessageDialog(null, info,"Info",1);
-            if(returnVal == JOptionPane.YES_OPTION){
-                double withdrawAmt = Double.parseDouble(amt);
-                double currBalance = Double.parseDouble(getInfo("balance", currentId));
-                double creditLine = Double.parseDouble(getInfo("creditLine", currentId));
-                if((currBalance-withdrawAmt)<(0-creditLine)){
-//                    System.out.println();
-                    JOptionPane.showMessageDialog(null, "Insufficient Balance", "Error",3);
-                }else{
-                    System.out.printf("Current Balance: %s \nCredit line: %s \nWithdraw Amt: "
-                            + "%s \ncurrBalance-withdrawAmt: %s\nInsufficient balance: %s\n",
-                            currBalance, creditLine, withdrawAmt, currBalance-withdrawAmt, (currBalance-withdrawAmt)<(0-creditLine));
-                    
-                    String accNumb = jTextField_AccNumb1.getText();
-
-                    Operations.withdraw(currBalance, currentId, withdrawAmt, creditLine, accNumb,getName(accNumb));
-                    setTextField(currentId);
-                    jTextField_Amt1.setText("");
-                }
-            }
-            
-        }
+        withdraw();
     }//GEN-LAST:event_withdrawBtnMouseClicked
 
     private void transferBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferBtnActionPerformed
@@ -1751,58 +1707,7 @@ public class UserMainWindow extends javax.swing.JFrame {
 
     private void transferBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferBtnMouseClicked
         // TODO add your handling code here:
-        String amt = jTextField_Amt2.getText();
-        
-        String targetAccNumb = jTextField_targetAccNumb.getText();
-        String info = "";
-        
-        if(amt.trim().equals("")){
-            info = "Amount can't be empty";
-            JOptionPane.showMessageDialog(null, info,"Empty field",2);
-        }else if(!amt.matches("[-0-9.]+")){
-            info = "Amount must be a number";
-            JOptionPane.showMessageDialog(null, info,"Warning",2);
-        }else if(Double.parseDouble(amt)<=0){
-            info = "Amount must be a positive number";
-            JOptionPane.showMessageDialog(null, info,"Warning",2);
-        }else{
-            
-            
-            if(targetAccNumb.equals(jTextField_AccNumb2.getText())){
-                JOptionPane.showMessageDialog(null, "Can't transfer to yourself","Warning",2);
-            }else if(targetAccNumb.equals("")){
-                JOptionPane.showMessageDialog(null, "Target account can't be empty","Warning",2);
-                
-            }else{
-                //checks if the target account number exists or not (targetName="" if doesn't exist)
-                String targetName = getName(targetAccNumb);
-                if(targetName.equals("") || targetAccNumb.equals("100000000")){
-                    JOptionPane.showMessageDialog(null, "Target account number doesn't exist","Warning",2);
-                }else{
-                    info = "Are you sure you want to tranfer $" + amt +" to account number "+ targetAccNumb+ " ("+ targetName +")?";
-                    int returnVal = JOptionPane.showConfirmDialog(null, info, "Confirmation", JOptionPane.YES_NO_OPTION);
-        //            JOptionPane.showMessageDialog(null, info,"Info",1);
-                    if(returnVal == JOptionPane.YES_OPTION){
-                        double transferAmt = Double.parseDouble(amt);
-                        double currBalance = Double.parseDouble(getInfo("balance", currentId));
-                        if(currBalance<=transferAmt){
-                            JOptionPane.showMessageDialog(null, "Insufficient Balance", "Error",3);
-                        }else{
-                            String accNumb = jTextField_AccNumb2.getText();
-                            String desc = jTextField_desc.getText();
-                            Operations.transfer(currBalance, currentId, transferAmt, targetAccNumb, accNumb, getName(accNumb), desc, targetName);
-                            setTextField(currentId);
-                            jTextField_Amt2.setText("");
-                            jTextField_targetAccNumb.setText("");
-                        }
-                    }
-                }
-                
-                
-            }
-            
-            
-        }
+        transfer();
     }//GEN-LAST:event_transferBtnMouseClicked
 
     private void jTextField_descFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_descFocusGained
@@ -1821,9 +1726,34 @@ public class UserMainWindow extends javax.swing.JFrame {
 
     private void jTabbedPane5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane5MouseClicked
         // TODO add your handling code here:
-        jTable1.setModel(new DefaultTableModel(null, new Object[]{"Date", "Description", "Amount In", "Amount Out", "Balance"}));
+        jTable1.setModel(new DefaultTableModel(null, new Object[]{"Date", "Description", "Amount In", "Amount Out", "Balance"})
+        {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        
+        
         TransactionOp.fillTable(jTable1, getInfo("accNumb", currentId));
     }//GEN-LAST:event_jTabbedPane5MouseClicked
+
+    private void jTextField_AmtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_AmtKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            deposit();
+        }
+    }//GEN-LAST:event_jTextField_AmtKeyPressed
+
+    private void jTextField_Amt1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_Amt1KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            withdraw();
+        }
+    }//GEN-LAST:event_jTextField_Amt1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -1885,6 +1815,136 @@ public class UserMainWindow extends javax.swing.JFrame {
         
         return name;
     
+    }
+    
+    public void deposit(){
+        String amt = jTextField_Amt.getText();
+        
+        String info = "";
+        if(amt.trim().equals("")){
+            info = "Amount can't be empty";
+            JOptionPane.showMessageDialog(null, info,"Empty field",2);
+        }else if(!amt.matches("[-0-9.]+")){
+            info = "Amount must be a number";
+            JOptionPane.showMessageDialog(null, info,"Warning",2);
+        }else if(Double.parseDouble(amt)<0){
+            info = "Amount must be a positive number and greater than 0";
+            JOptionPane.showMessageDialog(null, info,"Warning",2);
+        }else{
+            
+            info = "Are you sure you want to deposit $" + amt +"?";
+            int returnVal = JOptionPane.showConfirmDialog(null, info, "Confirmation", JOptionPane.YES_NO_OPTION);
+//            JOptionPane.showMessageDialog(null, info,"Info",1);
+            if(returnVal == JOptionPane.YES_OPTION){
+                double depositAmt = Double.parseDouble(amt);
+                double currBalance = Double.parseDouble(getInfo("balance", currentId));
+//                depositAmt = Double.parseDouble(amt);
+                double creditLine = Double.parseDouble(getInfo("creditLine", currentId));
+                String accNumb = jTextField_AccNumb.getText();
+                
+                Operations.deposit(currBalance, currentId, depositAmt, accNumb, getName(accNumb));
+                setTextField(currentId);
+                jTextField_Amt.setText("");
+            }
+            
+        }
+    }
+    
+    public void withdraw(){
+        String amt = jTextField_Amt1.getText();
+        
+        String info = "";
+        if(amt.trim().equals("")){
+            info = "Amount can't be empty";
+            JOptionPane.showMessageDialog(null, info,"Empty field",2);
+        }else if(!amt.matches("[-0-9.]+")){
+            info = "Amount must be a number";
+            JOptionPane.showMessageDialog(null, info,"Warning",2);
+        }else if(Double.parseDouble(amt)<=0){
+            info = "Amount must be a positive number and greater than 0";
+            JOptionPane.showMessageDialog(null, info,"Warning",2);
+        }else{
+            info = "Are you sure you want to withdraw $" + jTextField_Amt1.getText()+"?";
+            int returnVal = JOptionPane.showConfirmDialog(null, info, "Confirmation", JOptionPane.YES_NO_OPTION);
+//            JOptionPane.showMessageDialog(null, info,"Info",1);
+            if(returnVal == JOptionPane.YES_OPTION){
+                double withdrawAmt = Double.parseDouble(amt);
+                double currBalance = Double.parseDouble(getInfo("balance", currentId));
+                double creditLine = Double.parseDouble(getInfo("creditLine", currentId));
+                if((currBalance-withdrawAmt)<(0-creditLine)){
+//                    System.out.println();
+                    JOptionPane.showMessageDialog(null, "Insufficient Balance", "Error",3);
+                }else{
+                    System.out.printf("Current Balance: %s \nCredit line: %s \nWithdraw Amt: "
+                            + "%s \ncurrBalance-withdrawAmt: %s\nInsufficient balance: %s\n",
+                            currBalance, creditLine, withdrawAmt, currBalance-withdrawAmt, (currBalance-withdrawAmt)<(0-creditLine));
+                    
+                    String accNumb = jTextField_AccNumb1.getText();
+
+                    Operations.withdraw(currBalance, currentId, withdrawAmt, creditLine, accNumb,getName(accNumb));
+                    setTextField(currentId);
+                    jTextField_Amt1.setText("");
+                }
+            }
+            
+        }
+    }
+    
+    public void transfer(){
+        String amt = jTextField_Amt2.getText();
+        
+        String targetAccNumb = jTextField_targetAccNumb.getText();
+        String info = "";
+        
+        if(amt.trim().equals("")){
+            info = "Amount can't be empty";
+            JOptionPane.showMessageDialog(null, info,"Empty field",2);
+        }else if(!amt.matches("[-0-9.]+")){
+            info = "Amount must be a number";
+            JOptionPane.showMessageDialog(null, info,"Warning",2);
+        }else if(Double.parseDouble(amt)<=0){
+            info = "Amount must be a positive number and greater than 0";
+            JOptionPane.showMessageDialog(null, info,"Warning",2);
+        }else{
+            
+            
+            if(targetAccNumb.equals(jTextField_AccNumb2.getText())){
+                JOptionPane.showMessageDialog(null, "Can't transfer to yourself","Warning",2);
+            }else if(targetAccNumb.equals("")){
+                JOptionPane.showMessageDialog(null, "Target account can't be empty","Warning",2);
+                
+            }else{
+                //checks if the target account number exists or not (targetName="" if doesn't exist)
+                String targetName = getName(targetAccNumb);
+                if(targetName.equals("") || targetAccNumb.equals("100000000")){
+                    JOptionPane.showMessageDialog(null, "Target account number doesn't exist","Warning",2);
+                }else{
+                    info = "Are you sure you want to tranfer $" + amt +" to account number "+ targetAccNumb+ " ("+ targetName +")?";
+                    int returnVal = JOptionPane.showConfirmDialog(null, info, "Confirmation", JOptionPane.YES_NO_OPTION);
+        //            JOptionPane.showMessageDialog(null, info,"Info",1);
+                    if(returnVal == JOptionPane.YES_OPTION){
+                        double transferAmt = Double.parseDouble(amt);
+                        double currBalance = Double.parseDouble(getInfo("balance", currentId));
+                        if(currBalance<=transferAmt){
+                            JOptionPane.showMessageDialog(null, "Insufficient Balance", "Error",3);
+                        }else{
+                            String accNumb = jTextField_AccNumb2.getText();
+                            String desc = jTextField_desc.getText();
+                            Operations.transfer(currBalance, currentId, transferAmt, targetAccNumb, accNumb, getName(accNumb), desc, targetName);
+                            setTextField(currentId);
+                            jTextField_Amt2.setText("");
+                            jTextField_targetAccNumb.setText("");
+                            jTextField_desc.setText("");
+                            
+                        }
+                    }
+                }
+                
+                
+            }
+            
+            
+        }
     }
     
    

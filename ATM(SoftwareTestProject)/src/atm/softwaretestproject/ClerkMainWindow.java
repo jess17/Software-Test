@@ -760,7 +760,15 @@ public class ClerkMainWindow extends javax.swing.JFrame {
             new String [] {
                 "Account Number", "Name", "Balance", "Account Type", "Creation Date"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(jTable1);
 
@@ -1295,12 +1303,12 @@ public class ClerkMainWindow extends javax.swing.JFrame {
 
     private void jTextField_depositFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_depositFocusGained
         // TODO add your handling code here:
-        jTextField_accType.setBorder(jLabelBorderAft);
+        jTextField_deposit.setBorder(jLabelBorderAft);
     }//GEN-LAST:event_jTextField_depositFocusGained
 
     private void jTextField_depositFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_depositFocusLost
         // TODO add your handling code here:
-        jTextField_accType.setBorder(jLabelBorderBef);
+        jTextField_deposit.setBorder(jLabelBorderBef);
     }//GEN-LAST:event_jTextField_depositFocusLost
 
     private void jTextField_depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_depositActionPerformed
@@ -1455,7 +1463,16 @@ public class ClerkMainWindow extends javax.swing.JFrame {
 
     private void jTextField_searchKeyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_searchKeyKeyTyped
         // TODO add your handling code here:
-        jTable1.setModel(new DefaultTableModel(null, new Object[]{"Account Number", "Name", "Balance", "Account Type", "Creation Date"}));
+        jTable1.setModel(new DefaultTableModel(null, new Object[]{"Account Number", "Name", "Balance", "Account Type", "Creation Date"})
+        {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         AccSearchOperations.fillTable(jTable1, jTextField_searchKey.getText(), sortByArg());
     }//GEN-LAST:event_jTextField_searchKeyKeyTyped
 

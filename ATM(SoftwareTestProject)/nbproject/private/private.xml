@@ -5,12 +5,17 @@
         <group>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/test/ShowRes.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/ClerkMainWindow.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/test/ShowHist.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/DerbyConn.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/test/ExecuteQuery.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/test/CreateInsertDB.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/Operations.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/FilterWindow.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/TransactionOp.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/LoginWindow.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/AccSearchOperations.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/test/transDBTest.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/UserMainWindow.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/Operations.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/ATM(SoftwareTestProject)/src/atm/softwaretestproject/ExecQuery.java</file>
         </group>
     </open-files>

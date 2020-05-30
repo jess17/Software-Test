@@ -1,2 +1,3 @@
-Acc ID: 100000000
-Pass:123456
+Clerk
+Account Number: 100000000
+PIN:123456

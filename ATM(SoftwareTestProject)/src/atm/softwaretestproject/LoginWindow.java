@@ -412,6 +412,7 @@ public class LoginWindow extends javax.swing.JFrame {
         });
     }
     public void login(){
+        
         PreparedStatement st;
         ResultSet rs;
 
@@ -425,7 +426,9 @@ public class LoginWindow extends javax.swing.JFrame {
         if(accNumb.trim().equals("Account Number")){
             JOptionPane.showMessageDialog(null, "Enter Your Account Number", "Empty Username", 2);
         }
-        else if(password.trim().equals("PIN")){
+        else if(!accNumb.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "Account Number must be a number","Warning",2);
+        }else if(password.trim().equals("PIN")){
             JOptionPane.showMessageDialog(null, "Enter Your PIN", "Empty PIN", 2);
         }
         else{
