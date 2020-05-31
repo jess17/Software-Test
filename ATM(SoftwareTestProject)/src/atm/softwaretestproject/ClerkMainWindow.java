@@ -1288,7 +1288,16 @@ public class ClerkMainWindow extends javax.swing.JFrame {
             }
             createAcc(pin, name, accType, balance, interestRate, creditLine, transFee);
 //            createAcc(String name, String accType, Integer balance, Double interestRate, Double creditLine, Double transFee)
-            jTable1.setModel(new DefaultTableModel(null, new Object[]{"Account Number", "Name", "Balance", "Account Type", "Creation Date"}));
+            jTable1.setModel(new DefaultTableModel(null, new Object[]{"Account Number", "Name", "Balance", "Account Type", "Creation Date"})
+            {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
             AccSearchOperations.fillTable(jTable1, "", sortByArg());
             setFieldAccSummary();
         }
