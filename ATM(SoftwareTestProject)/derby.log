@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sun May 31 19:46:08 CST 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0172-6a8d-aa38-000002d385b0 
+Sun May 31 21:23:08 CST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0172-6ae6-783b-000002d3ea28 
 on database directory C:\Users\ASUS\Documents\NetBeansProjects\ATM(SoftwareTestProject)\software_test_project_atm_db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
 Loaded from file:/F:/Project/OJDBC%20Driver/Java%20DB/derby.jar
 java.vendor=Oracle Corporation
@@ -12,24 +12,8 @@ os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Sun May 31 19:46:09 CST 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance 2057c01b-0172-6a8d-aa38-000002d385b0 
-on database directory C:\Users\ASUS\Documents\NetBeansProjects\ATM(SoftwareTestProject)\transaction_db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
-Loaded from file:/F:/Project/OJDBC%20Driver/Java%20DB/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_101-b13
-user.dir=C:\Users\ASUS\Documents\NetBeansProjects\ATM(SoftwareTestProject)
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
+Sun May 31 21:23:43 CST 2020: Shutting down Derby engine
 ----------------------------------------------------------------
-Sun May 31 19:48:22 CST 2020: Shutting down Derby engine
-----------------------------------------------------------------
-Sun May 31 19:48:22 CST 2020:
-Shutting down instance 2057c01b-0172-6a8d-aa38-000002d385b0 on database directory C:\Users\ASUS\Documents\NetBeansProjects\ATM(SoftwareTestProject)\transaction_db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
-----------------------------------------------------------------
-Sun May 31 19:48:22 CST 2020:
-Shutting down instance a816c00e-0172-6a8d-aa38-000002d385b0 on database directory C:\Users\ASUS\Documents\NetBeansProjects\ATM(SoftwareTestProject)\software_test_project_atm_db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Sun May 31 21:23:45 CST 2020:
+Shutting down instance a816c00e-0172-6ae6-783b-000002d3ea28 on database directory C:\Users\ASUS\Documents\NetBeansProjects\ATM(SoftwareTestProject)\software_test_project_atm_db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
 ----------------------------------------------------------------

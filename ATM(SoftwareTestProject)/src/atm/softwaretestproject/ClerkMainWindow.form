@@ -462,7 +462,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel3">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="PIN (6 Numbers):"/>
+                        <Property name="text" type="java.lang.String" value="PIN (6-digit number):"/>
                       </Properties>
                     </Component>
                   </SubComponents>

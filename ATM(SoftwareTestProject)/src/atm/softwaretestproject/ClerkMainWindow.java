@@ -369,7 +369,7 @@ public class ClerkMainWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("PIN (6 Numbers):");
+        jLabel3.setText("PIN (6-digit number):");
 
         javax.swing.GroupLayout PIN_PanelLayout = new javax.swing.GroupLayout(PIN_Panel);
         PIN_Panel.setLayout(PIN_PanelLayout);
