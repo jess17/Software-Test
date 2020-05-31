@@ -1824,10 +1824,10 @@ public class UserMainWindow extends javax.swing.JFrame {
         if(amt.trim().equals("")){
             info = "Amount can't be empty";
             JOptionPane.showMessageDialog(null, info,"Empty field",2);
-        }else if(!amt.matches("[-0-9.]+")){
-            info = "Amount must be a number";
+        }else if(!amt.matches("[0-9.]+")){
+            info = "Amount must be a positive number";
             JOptionPane.showMessageDialog(null, info,"Warning",2);
-        }else if(Double.parseDouble(amt)<0){
+        }else if(Double.parseDouble(amt)<=0){
             info = "Amount must be a positive number and greater than 0";
             JOptionPane.showMessageDialog(null, info,"Warning",2);
         }else{
@@ -1857,8 +1857,8 @@ public class UserMainWindow extends javax.swing.JFrame {
         if(amt.trim().equals("")){
             info = "Amount can't be empty";
             JOptionPane.showMessageDialog(null, info,"Empty field",2);
-        }else if(!amt.matches("[-0-9.]+")){
-            info = "Amount must be a number";
+        }else if(!amt.matches("[0-9.]+")){
+            info = "Amount must be a positive number";
             JOptionPane.showMessageDialog(null, info,"Warning",2);
         }else if(Double.parseDouble(amt)<=0){
             info = "Amount must be a positive number and greater than 0";
@@ -1899,8 +1899,8 @@ public class UserMainWindow extends javax.swing.JFrame {
         if(amt.trim().equals("")){
             info = "Amount can't be empty";
             JOptionPane.showMessageDialog(null, info,"Empty field",2);
-        }else if(!amt.matches("[-0-9.]+")){
-            info = "Amount must be a number";
+        }else if(!amt.matches("[0-9.]+")){
+            info = "Amount must be a positive number";
             JOptionPane.showMessageDialog(null, info,"Warning",2);
         }else if(Double.parseDouble(amt)<=0){
             info = "Amount must be a positive number and greater than 0";
@@ -1913,13 +1913,15 @@ public class UserMainWindow extends javax.swing.JFrame {
             }else if(targetAccNumb.equals("")){
                 JOptionPane.showMessageDialog(null, "Target account can't be empty","Warning",2);
                 
+            }else if(!targetAccNumb.matches("[0-9]+")){
+                JOptionPane.showMessageDialog(null, "Target account must be a number","Warning",2);
             }else{
                 //checks if the target account number exists or not (targetName="" if doesn't exist)
                 String targetName = getName(targetAccNumb);
                 if(targetName.equals("") || targetAccNumb.equals("100000000")){
                     JOptionPane.showMessageDialog(null, "Target account number doesn't exist","Warning",2);
                 }else{
-                    info = "Are you sure you want to tranfer $" + amt +" to account number "+ targetAccNumb+ " ("+ targetName +")?";
+                    info = "Are you sure you want to transfer $" + amt +" to account number "+ targetAccNumb+ " ("+ targetName +")?";
                     int returnVal = JOptionPane.showConfirmDialog(null, info, "Confirmation", JOptionPane.YES_NO_OPTION);
         //            JOptionPane.showMessageDialog(null, info,"Info",1);
                     if(returnVal == JOptionPane.YES_OPTION){

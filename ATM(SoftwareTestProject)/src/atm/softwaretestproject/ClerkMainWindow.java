@@ -1487,7 +1487,16 @@ public class ClerkMainWindow extends javax.swing.JFrame {
 
     private void sortByComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByComboBoxActionPerformed
         // TODO add your handling code here:
-        jTable1.setModel(new DefaultTableModel(null, new Object[]{"Account Number", "Name", "Balance", "Account Type", "Creation Date"}));
+        jTable1.setModel(new DefaultTableModel(null, new Object[]{"Account Number", "Name", "Balance", "Account Type", "Creation Date"})
+        {
+            boolean[] canEdit = new boolean [] {
+            false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         AccSearchOperations.fillTable(jTable1, jTextField_searchKey.getText(), sortByArg());
     }//GEN-LAST:event_sortByComboBoxActionPerformed
 
