@@ -17,7 +17,7 @@ Customer's account:
   PIN: 123456
   
  Application's screenshots:
-  Login window:
+  Login window:\n
     ![Login window](https://user-images.githubusercontent.com/4330756/115949591-bcc0b780-a508-11eb-840a-772868286551.jpg)
 
   Clerk:
