@@ -17,16 +17,19 @@ Customer's account:
   PIN: 123456
   
  Application's screenshots:
-  Login window:\n
+  Login window:
+  
     ![Login window](https://user-images.githubusercontent.com/4330756/115949591-bcc0b780-a508-11eb-840a-772868286551.jpg)
 
   Clerk:
+  
     ![Clerk's window (Accounts Summary tab - accounts)](https://user-images.githubusercontent.com/4330756/115949625-f396cd80-a508-11eb-8790-2ebcf913f5fa.jpg)
     ![Clerk's window (Accounts Summary tab - balance)](https://user-images.githubusercontent.com/4330756/115949628-f4c7fa80-a508-11eb-8112-5fc672d68ba8.jpg)
     ![Clerk's window (Create acc tab)](https://user-images.githubusercontent.com/4330756/115949629-f5609100-a508-11eb-9e40-2f9015808a44.jpg)
     ![Clerk's window (Search acc tab)](https://user-images.githubusercontent.com/4330756/115949631-f5f92780-a508-11eb-853e-03076bdb669a.jpg)
   
   Customer:
+  
    ![Balance inquiry](https://user-images.githubusercontent.com/4330756/115949650-13c68c80-a509-11eb-866c-fd16a79632ca.jpg)
    ![Deposit tab](https://user-images.githubusercontent.com/4330756/115949651-145f2300-a509-11eb-8a59-27cefd429d4c.jpg)
    ![Transaction history tab](https://user-images.githubusercontent.com/4330756/115949653-14f7b980-a509-11eb-8e56-73f702c36be9.jpg)
