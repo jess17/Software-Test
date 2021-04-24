@@ -16,7 +16,8 @@ Customer's account:
   Account number: 10000001 - 100000009
   PIN: 123456
   
- Application's screenshots:
+ # Application's screenshots:
+ 
   Login window:
   
    ![Login window](https://user-images.githubusercontent.com/4330756/115949591-bcc0b780-a508-11eb-840a-772868286551.jpg)
