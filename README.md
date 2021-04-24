@@ -19,14 +19,14 @@ Customer's account:
  Application's screenshots:
   Login window:
   
-    ![Login window](https://user-images.githubusercontent.com/4330756/115949591-bcc0b780-a508-11eb-840a-772868286551.jpg)
+   ![Login window](https://user-images.githubusercontent.com/4330756/115949591-bcc0b780-a508-11eb-840a-772868286551.jpg)
 
   Clerk:
-  
-    ![Clerk's window (Accounts Summary tab - accounts)](https://user-images.githubusercontent.com/4330756/115949625-f396cd80-a508-11eb-8790-2ebcf913f5fa.jpg)
-    ![Clerk's window (Accounts Summary tab - balance)](https://user-images.githubusercontent.com/4330756/115949628-f4c7fa80-a508-11eb-8112-5fc672d68ba8.jpg)
-    ![Clerk's window (Create acc tab)](https://user-images.githubusercontent.com/4330756/115949629-f5609100-a508-11eb-9e40-2f9015808a44.jpg)
-    ![Clerk's window (Search acc tab)](https://user-images.githubusercontent.com/4330756/115949631-f5f92780-a508-11eb-853e-03076bdb669a.jpg)
+    
+   ![Clerk's window (Accounts Summary tab - accounts)](https://user-images.githubusercontent.com/4330756/115949625-f396cd80-a508-11eb-8790-2ebcf913f5fa.jpg)
+   ![Clerk's window (Accounts Summary tab - balance)](https://user-images.githubusercontent.com/4330756/115949628-f4c7fa80-a508-11eb-8112-5fc672d68ba8.jpg)
+   ![Clerk's window (Create acc tab)](https://user-images.githubusercontent.com/4330756/115949629-f5609100-a508-11eb-9e40-2f9015808a44.jpg)
+   ![Clerk's window (Search acc tab)](https://user-images.githubusercontent.com/4330756/115949631-f5f92780-a508-11eb-853e-03076bdb669a.jpg)
   
   Customer:
   
