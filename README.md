@@ -1,19 +1,22 @@
-# Software-Test
-Simple bank application, developed using NetBeans IDE 8.2
-Database: Java DB
-User accounts database: ATM(SoftwareTestProject)/software_test_project_atm_db
-Transaction history database: ATM(SoftwareTestProject)/transaction_db
+# Software Test Final Project
+Simple bank application, developed using NetBeans IDE 8.2\
+Database: Java DB 
+### To run the app u'll need the JAR file, 2 database folder (the user accounts and transaction history database) and the lib folder \
+#### Database location:
+&ensp;User accounts database: \
+&ensp;&ensp;ATM(SoftwareTestProject)/software_test_project_atm_db \
+&ensp;Transaction history database: \
+&ensp;&ensp;ATM(SoftwareTestProject)/transaction_db
+#### JAR file location:
+  ATM(SoftwareTestProject)\dist 
 
-JAR file in ATM(SoftwareTestProject)\dist
-
-To run the app u'll need the JAR file, 2 database folder and the lib folder
-
+## Default accounts
 Clerk's account: 
   Account number: 100000000
   PIN: 123456
 
 Customer's account:
-  Account number: 10000001 - 100000009
+  Account number: 100000001 - 100000009
   PIN: 123456
   
  # Application's screenshots:
